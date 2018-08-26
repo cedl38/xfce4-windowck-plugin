@@ -55,9 +55,7 @@ gchar *test_theme_dir (const gchar *theme, const char *themedir, const gchar *fi
 gchar *
 get_unity_theme_dir (const gchar *theme, const gchar *default_theme)
 {
-    const gchar *file;
     gchar *abs_path;
-    gint i;
 
     if (g_path_is_absolute (theme))
     {

@@ -243,7 +243,7 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
     orientation = xfce_panel_plugin_get_orientation(plugin);
 
     /* not needed for shrink mode */
-    if (!wckp->prefs->size_mode == SHRINK)
+    if (wckp->prefs->size_mode != SHRINK)
         xfce_panel_plugin_set_shrink (plugin, TRUE);
 
     /* create some panel widgets */

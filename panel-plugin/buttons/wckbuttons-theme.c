@@ -28,52 +28,6 @@
 #define XPM_COLOR_SYMBOL_SIZE 22
 
 
-static gboolean
-set_g_value (const gchar * lvalue, const GValue *rvalue, Settings *rc)
-{
-    gint i;
-
-    TRACE ("entering setValue");
-
-    g_return_val_if_fail (lvalue != NULL, FALSE);
-    g_return_val_if_fail (rvalue != NULL, FALSE);
-
-    for (i = 0; rc[i].option; i++)
-    {
-        if (!g_ascii_strcasecmp (lvalue, rc[i].option))
-        {
-            if (rvalue)
-            {
-                if (rc[i].value)
-                {
-                    g_value_unset (rc[i].value);
-                    g_value_init (rc[i].value, G_VALUE_TYPE(rvalue));
-                }
-                else
-                {
-                    rc[i].value = g_new0(GValue, 1);
-                    g_value_init (rc[i].value, G_VALUE_TYPE(rvalue));
-                }
-
-                g_value_copy (rvalue, rc[i].value);
-                return TRUE;
-            }
-        }
-    }
-    return FALSE;
-}
-
-
-static gboolean
-set_string_value (const gchar * lvalue, const gchar *value, Settings *rc)
-{
-    GValue tmp_val = {0, };
-    g_value_init(&tmp_val, G_TYPE_STRING);
-    g_value_set_static_string(&tmp_val, value);
-    return set_g_value (lvalue, &tmp_val, rc);
-}
-
-
 static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
     gint i,j;
     gchar imagename[40];

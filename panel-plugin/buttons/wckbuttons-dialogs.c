@@ -217,7 +217,8 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WBPlugin *wb)
 static gint
 wckbuttons_theme_sort_func (GtkTreeModel *model,
                                GtkTreeIter  *iter1,
-                               GtkTreeIter  *iter2)
+                               GtkTreeIter  *iter2,
+                               void *unused)
 {
   gchar *str1 = NULL;
   gchar *str2 = NULL;
@@ -302,7 +303,7 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
             {
             list_store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
             gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME,
-                                             (GtkTreeIterCompareFunc) wckbuttons_theme_sort_func,
+                                             wckbuttons_theme_sort_func,
                                              NULL, NULL);
             gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME, GTK_SORT_ASCENDING);
             gtk_tree_view_set_model (GTK_TREE_VIEW (theme_name_treeview), GTK_TREE_MODEL (list_store));

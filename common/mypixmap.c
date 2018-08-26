@@ -53,37 +53,3 @@ pixbuf_alpha_load (const gchar * dir, const gchar * file)
     }
     return NULL;
 }
-
-
-static GdkPixbuf *
-pixmap_compose (GdkPixbuf *pixbuf, const gchar * dir, const gchar * file)
-{
-    GdkPixbuf *alpha;
-    gint width, height;
-
-    alpha = pixbuf_alpha_load (dir, file);
-
-    if (!alpha)
-    {
-        /* We have no suitable image to layer on top of the XPM, stop here... */
-        return (pixbuf);
-    }
-
-    if (!pixbuf)
-    {
-        /* We have no XPM canvas and found a suitable image, use it... */
-        return (alpha);
-    }
-
-    width  = MIN (gdk_pixbuf_get_width (pixbuf),
-                  gdk_pixbuf_get_width (alpha));
-    height = MIN (gdk_pixbuf_get_height (pixbuf),
-                  gdk_pixbuf_get_height (alpha));
-
-    gdk_pixbuf_composite (alpha, pixbuf, 0, 0, width, height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 0xFF);
-
-    g_object_unref (alpha);
-
-    return pixbuf;
-}
