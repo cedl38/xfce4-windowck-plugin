@@ -31,7 +31,7 @@ See [this page](https://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-p
 
 #### Arch Linux
 
-
+For Arch Linux users [AUR package](https://aur.archlinux.org/packages/xfce4-windowck-plugin-bobko-mod/) is available
 
 #### Other Linux distributions
 

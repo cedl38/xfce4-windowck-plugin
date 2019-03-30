@@ -115,7 +115,6 @@ themes/windowck-dark/Makefile
 themes/windowck-dark/xfwm4/Makefile
 themes/windowck-dark/unity/Makefile
 po/Makefile.in
-arch/PKGBUILD
 ])
 
 dnl ***************************

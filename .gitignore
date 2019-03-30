@@ -32,5 +32,7 @@ stamp-*
 po/*.mo
 themes/**/*.png
 themes/**/*.xpm
-arch/PKGBUILD
+arch/*
+!arch/PKGBUILD
+!arch/.SRCINFO
 .idea/**
